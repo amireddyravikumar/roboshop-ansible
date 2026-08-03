@@ -19,4 +19,4 @@
 
   - name: print output
     debug:
-      msg: "{ ec2-output }}"
+      msg: "{{ ec2-output }}"
