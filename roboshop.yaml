@@ -36,7 +36,7 @@
       ttl: 1
       record: "{{ item.item }}.{{ domain_name }}"
       value: "{{ item.instances[0].private_ip_address }}"
-      override: true
+      overwrite: true
     loop: "{{ ec2_output.results }}"
 
   - name: create  frontend route 53 record
@@ -47,6 +47,6 @@
       ttl: 1
       record: "{{ item.item }}.{{ domain_name }}"
       value: "{{ item.instances[0].public_ip_address }}"
-      override: true
+      overwrite: true
     loop: "{{ ec2_output.results }}"
     when: item.item =="frontend"
