@@ -63,9 +63,7 @@
       type: A
       record: "{{ item }}.{{ domain_name }}"
     loop : "{{ instances_list }}"
-    when: 
-    - action == "delete"
-    - item == "frontend"
+    when: action == "delete"
 
   - name: delete front end route 53 record
     amazon.aws.route53:
