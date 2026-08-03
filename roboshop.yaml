@@ -10,7 +10,7 @@
       instance_type: t3.micro
       name: "roboshop-{{ item }}"
       image_id: "{{ image_id }}"
-      security_group: 
+      security_groups: 
       - "roboshop-{{ item }}"
       - roboshop-common
     loop: "{{ instances_list }}"
