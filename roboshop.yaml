@@ -2,7 +2,7 @@
   hosts: local
   connection: local
   vars:
-    instances_list: ["mongodb"]
+    instances_list: ["mongodb", "redis", "mysql", "rabbitmq"]
     image_id: ami-0220d79f3f480ecf5
     domain_name: amireddyravi.space
     zone_id: Z02709521C0H67BW0WAUD
