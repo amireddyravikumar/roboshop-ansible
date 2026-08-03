@@ -9,12 +9,12 @@
   - name: start an instance with a public IP address
     amazon.aws.ec2_instance:
       instance_type: c3.micro
-      name: {{ item }}
+      name: "{{ item }}"
       security_group: 
       - "roboshop-{{ item }}"
       - "roboshop-common"
-      image_id: {{ image_id }}
-    loop: {{ instances_list }}
+      image_id: "{{ image_id }}"
+    loop: "{{ instances_list }}"
     register: ec2-output
 
   - name: print output
