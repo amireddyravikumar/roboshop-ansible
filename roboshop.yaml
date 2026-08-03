@@ -15,8 +15,8 @@
       - "roboshop-common"
       image_id: "{{ image_id }}"
     loop: "{{ instances_list }}"
-    register: ec2-output
+    register: ec2_output
 
   - name: print output
     debug:
-      msg: "{{ ec2-output }}"
+      msg: "{{ ec2_output }}"
