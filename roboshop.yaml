@@ -1,0 +1,22 @@
+- name: roboshop instances management
+  hosts: local
+  connection: local
+  vars:
+    instances_list: ["mongodb", "redis", "mysql", "rabbitmq"]
+    image_id : ami-0220d79f3f480ecf5
+    
+  tasks:
+  - name: start an instance with a public IP address
+    amazon.aws.ec2_instance:
+      instance_type: c3.micro
+      name: {{ item }}
+      security_group: 
+      - "roboshop-{{ item }}"
+      - "roboshop-common"
+      image_id: {{ image_id }}
+    loop: {{ instances_list }}
+    register: ec2-output
+
+  - name: print output
+    debug:
+      msg: {{ ec2-output }}
