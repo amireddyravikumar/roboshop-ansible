@@ -2,10 +2,9 @@
   hosts: local
   connection: local
   vars:
-    instances_list: ["mongodb", "redis", "mysql", "rabbitmq", "frontend"]
+    instances: ["mongodb", "redis", "mysql", "rabbitmq","catalogue","user","cart","shipping","payment", "frontend"]
     image_id: ami-0220d79f3f480ecf5
     domain_name: amireddyravi.space
-    zone_id: Z02709521C0H67BW0WAUD
     action: create
   tasks:
   - name: create ec2 instances
@@ -16,7 +15,7 @@
       security_groups: 
       - "roboshop-{{ item }}"
       - roboshop-common
-    loop: "{{ instances_list }}"
+    loop: "{{ instances }}"
     register: ec2_output
 
   # - name: print output
@@ -62,7 +61,7 @@
       ttl: 1
       type: A
       record: "{{ item }}.{{ domain_name }}"
-    loop : "{{ instances_list }}"
+    loop : "{{ instances }}"
     when: action == "delete"
 
   - name: delete front end route 53 record
@@ -72,7 +71,7 @@
       ttl: 1
       type: A
       record: "{{ domain_name }}"
-    loop : "{{ instances_list }}"
+    loop : "{{ instances }}"
     when: 
     - action == "delete"
     - item == "frontend"
