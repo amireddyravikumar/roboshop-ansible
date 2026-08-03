@@ -4,11 +4,10 @@
   vars:
     instances_list: ["mongodb", "redis", "mysql", "rabbitmq"]
     image_id : ami-0220d79f3f480ecf5
-    
   tasks:
-  - name: start an instance with a public IP address
+  - name: create ec2 instances
     amazon.aws.ec2_instance:
-      instance_type: c3.micro
+      instance_type: t3.micro
       name: "{{ item }}"
       security_group: 
       - "roboshop-{{ item }}"
