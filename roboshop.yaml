@@ -2,10 +2,11 @@
   hosts: local
   connection: local
   vars:
-    instances_list: ["mongodb", "redis", "mysql", "rabbitmq"]
+    instances_list: ["mongodb", "redis", "mysql", "rabbitmq", "frontend"]
     image_id: ami-0220d79f3f480ecf5
     domain_name: amireddyravi.space
     zone_id: Z02709521C0H67BW0WAUD
+    action: create
   tasks:
   - name: create ec2 instances
     amazon.aws.ec2_instance:
@@ -34,10 +35,11 @@
       zone: "{{ domain_name }}"
       type: A
       ttl: 1
-      record: "{{ item.item }}.{{ domain_name }}"
+      record: "{{ domain_name }}"
       value: "{{ item.instances[0].private_ip_address }}"
       overwrite: true
     loop: "{{ ec2_output.results }}"
+    when: action == "create"
 
   - name: create  frontend route 53 record
     amazon.aws.route53:
@@ -49,4 +51,31 @@
       value: "{{ item.instances[0].public_ip_address }}"
       overwrite: true
     loop: "{{ ec2_output.results }}"
-    when: item.item =="frontend"
+    when: 
+    - item.item == "frontend"
+    - action == "create"
+
+  - name: delete route 53 records
+    amazon.aws.route53:
+      state: absent
+      zone: "{{ domain_name }}"
+      ttl: 1
+      type: A
+      record: "{{ item }}.{{ domain_name }}"
+    loop : "{{ instances_list }}"
+    when: 
+    - action == "delete"
+    - item == "frontend"
+
+  - name: delete front end route 53 record
+    amazon.aws.route53:
+      state: absent
+      zone: "{{ domain_name }}"
+      ttl: 1
+      type: A
+      record: "{{ domain_name }}"
+    loop : "{{ instances_list }}"
+    when: 
+    - action == "delete"
+    - item == "frontend"
+
