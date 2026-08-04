@@ -1,0 +1,22 @@
+- name: Configuring mysql DB
+  hosts: mysql
+  become: yes
+  vars:
+    # Replace with your actual plain-text password or an Ansible Vault variable
+    new_root_password: "RoboShop@1"
+  tasks:
+  - name: install mysql server 
+    package:
+      name: mysql-server
+      state: present
+  
+  - name: Start the service
+    service:
+      name: "mysqld"
+      state: started
+      enabled: yes
+  - name: setting the root password
+    user:
+      name: root
+      password: {{ new_root_password }}
+      update_password: always
