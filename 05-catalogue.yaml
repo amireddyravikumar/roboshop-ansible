@@ -61,8 +61,8 @@
       msg: "{{ catalogue_output }}"
     tags:
     - mongodb
-  # - name: load products to mongodb
-  #   community.mongodb.mongodb_shell:
-  #     login_host: "{{ MONGODB_HOST }}"  
-  #     file: /app/db/master-data.js
-  #     idempotent: yes
+  - name: load products to mongodb
+    shell: mongosh --host "{{ MONGODB_OST }}" </app/db/master-data.js
+    when: catalogue_output.stdout | int < 0 
+    tags:
+    - mongodb
