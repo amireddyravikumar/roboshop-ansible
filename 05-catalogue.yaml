@@ -33,6 +33,6 @@
       dest: /tmp/catalogue.zip
   - name: Copy and unzip local file to remote server
     unarchive:
-      src: /tmp/archive.zip
+      src: /tmp/catalogue.zip
       dest: /app
       remote_src: yes
