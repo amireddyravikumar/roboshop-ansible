@@ -15,3 +15,27 @@
       home: /app
       shell: /sbin/nologin
       comment: "Roboshop System User"
+  - name: Remove a directory 
+    file:
+      path: /app
+      state: absent
+  - name: delete catalogue.zip file from tmp folder 
+    file:
+      path: /tmp/catalogue.zip
+      state: absent
+  - name: create app directory 
+    file:
+      path: /app
+      state: directory
+  - name: create app directory 
+    file:
+      path: /app
+      state: present
+  - name: Download the latest kubectl binary
+    get_url:
+      url: "https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip"
+      dest: /tmp/catalogue.zip
+  - name: Copy and unzip local file to remote server
+    unarchive:
+      src: /tmp/archive.zip
+      dest: /app
