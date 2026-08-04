@@ -67,10 +67,10 @@
     tags:
     - mongodb
   - name: daemon reload
-    systemd_service:
+    systemd:
       name: catalogue
       daemon_reload: true
-    when: unit_file.change
+    when: unit_file_changed.changed
   - name: Start the service
     service:
       name: catalogue
