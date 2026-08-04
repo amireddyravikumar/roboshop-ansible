@@ -76,5 +76,3 @@
       name: catalogue
       state: restarted
       enabled: yes
-    tags:
-    - mongodb
