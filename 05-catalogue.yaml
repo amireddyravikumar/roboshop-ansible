@@ -59,8 +59,8 @@
   - name: print catalogue 
     debug:
       msg: {{ catalogue_output }}
-      tags:
-      - mongodb
+    tags:
+    - mongodb
   # - name: load products to mongodb
   #   community.mongodb.mongodb_shell:
   #     login_host: "{{ MONGODB_HOST }}"  
