@@ -18,5 +18,5 @@
   - name: setting the root password
     user:
       name: root
-      password: {{ new_root_password }}
+      password: "{{ new_root_password }}"
       update_password: always
