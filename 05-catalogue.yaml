@@ -58,7 +58,7 @@
     - mongodb
   - name: print catalogue 
     debug:
-      msg: {{ catalogue_output }}
+      msg: "{{ catalogue_output }}"
     tags:
     - mongodb
   # - name: load products to mongodb
