@@ -2,6 +2,8 @@
   hosts: redis
   become: yes
   tasks:
+  - name: enable redis 7
+    commnad: dnf install enable redis:7 -y
   - name: install redis 
     package:
       name: redis
