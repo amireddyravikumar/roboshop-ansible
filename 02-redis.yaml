@@ -18,8 +18,8 @@
   - name: replace the protected mode 
     replace:
       path: /etc/redis/redis.conf
-      regexp: "protected mode yes"
-      replace: "protected mode no"
+      regexp: "protected-mode"
+      line: "protected-mode no"
 
   - name: Start the service
     service:
