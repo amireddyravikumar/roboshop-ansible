@@ -6,3 +6,13 @@
     copy:
       src: mongo.repo
       dest: /etc/yum.repos.d/mongo.repo
+
+  - name: install mongodb
+    package:
+      name: mongodb-org
+      state: present
+  
+  - name: Start the service
+    service:
+      name: "mongodb"
+      state: started
