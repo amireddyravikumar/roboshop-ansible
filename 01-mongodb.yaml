@@ -12,8 +12,6 @@
       name: mongodb-org
       state: present
   
-  
-
   - name: Allow remote connections
     replace:
       path: /etc/mongod.conf
@@ -25,3 +23,4 @@
       name: "mongod"
       state: started
       enabled: yes
+  
