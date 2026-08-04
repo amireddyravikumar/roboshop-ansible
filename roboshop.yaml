@@ -2,7 +2,8 @@
   hosts: local
   connection: local
   vars:
-    instances: ["mongodb", "redis", "mysql", "rabbitmq","catalogue","user","cart","shipping","payment", "frontend"]
+    instances: ["mongodb"]
+    # , "redis", "mysql", "rabbitmq","catalogue","user","cart","shipping","payment", "frontend"]
     image_id: ami-0220d79f3f480ecf5
     domain_name: amireddyravi.space
     action: create
@@ -80,6 +81,7 @@
     amazon.aws.ec2_instance:
       state: absent
       name: "roboshop-{{ item }}"
+      wait: false
     loop: "{{ instances }}"
     when: action == "delete"
 
