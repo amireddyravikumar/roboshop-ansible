@@ -48,7 +48,7 @@
       src: mongo.repo
       dest: /etc/yum.repos.d/mongo.repo
   - name: install mongodb client
-    package::
+    package:
       name: mongodb-mongosh
       state: present
   - name: load products to mongodb
