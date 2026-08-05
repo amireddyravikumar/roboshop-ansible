@@ -1,5 +1,5 @@
 - name: configuring the frontend server
-  hosts: frondend
+  hosts: frontend
   become: yes
   tasks:
   - name: enable nginx 1.24
