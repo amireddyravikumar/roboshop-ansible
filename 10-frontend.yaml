@@ -12,6 +12,10 @@
     file:
       path: /usr/share/nginx/html
       state: absent
+  - name: create html directory 
+    file:
+      path: /usr/share/nginx/html
+      state: directory
   - name: Download the frontend code
     get_url:
       url: "https://roboshop-artifacts.s3.amazonaws.com/frontend-v3.zip"
