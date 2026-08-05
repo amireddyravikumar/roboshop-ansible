@@ -53,7 +53,6 @@
     pip:
       name: PyMySQL
       executable: pip3.9
-
   - name: load mysql data
     community.mysql.mysql_db:
       name: all
