@@ -3,7 +3,7 @@ ansible_password: DevOps321
 MONGODB_HOST: mongodb.amireddyravi.space
 REDIS_HOST: redis.amireddyravi.space
 MYSQL_HOST: mysql.amireddyravi.space
-RABBIT_HOST: rabbit.amireddyravi.space
+RABBITMQ_HOST: rabbitmq.amireddyravi.space
 
 CATALOGUE_HOST: catalogue.amireddyravi.space
 USER_HOST: user.amireddyravi.space
