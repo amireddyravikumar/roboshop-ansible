@@ -6,6 +6,9 @@
     package:
       name: maven
       state: present
+    loop:
+    - maven
+    - mysql
   - name: create roboshop system user
     user:
       name: roboshop
