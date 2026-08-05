@@ -31,7 +31,7 @@
       state: directory
   - name: Download the payment code
     get_url:
-      url: "https://roboshop-artifacts.s3.amazonaws.com/payment-v3.zip"
+      url: https://roboshop-artifacts.s3.amazonaws.com/payment-v3.zip
       dest: /tmp/payment.zip
   - name: Copy and unzip local file to remote server
     unarchive:
