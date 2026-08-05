@@ -4,6 +4,9 @@ MONGODB_HOST: mongodb.amireddyravi.space
 REDIS_HOST: redis.amireddyravi.space
 MYSQL_HOST: mysql.amireddyravi.space
 RABBIT_HOST: rabbit.amireddyravi.space
+
 CATALOGUE_HOST: catalogue.amireddyravi.space
 USER_HOST: user.amireddyravi.space
 CART_HOST: cart.amireddyravi.space
+SHIPPING_HOST: shipping.amireddyravi.space
+PAYMENT_HOST: payment.amireddyravi.space
