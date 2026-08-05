@@ -12,6 +12,11 @@
     file:
       path: /usr/share/nginx/html
       state: absent
+  
+  - name: Remove frontend.zip from tmp directory 
+    file:
+      path: /tmp/frontend.zip
+      state: absent
   - name: create html directory 
     file:
       path: /usr/share/nginx/html
@@ -25,3 +30,16 @@
       src: /tmp/frontend.zip
       dest: /usr/share/nginx/html
       remote_src: yes
+  - name: Remove default nginx conf 
+    file:
+      path: /etc/nginx/nginx.conf
+      state: absent
+  - name: copy nginx conf service
+    template:
+      src: nginx.conf
+      dest: /etc/nginx/nginx.conf
+  - name: Enable and Start the frontend service
+    service:
+      name: frontend
+      state: restarted
+      enabled: yes
